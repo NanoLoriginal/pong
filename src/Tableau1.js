@@ -39,18 +39,20 @@ class Tableau1 extends Phaser.Scene{
         this.p2.setImmovable(true);
 
 
-
+        let me = this;
         this.physics.add.collider(this.balle,this.bas);
         this.physics.add.collider(this.balle,this.haut);
-        let me = this;
 
-        this.physics.add.collider(this.p1,this.balle,function(){
-            me.rebond(this.p1);
+
+        this.physics.add.collider(this.balle,this.p1,function(){
+            me.rebond(me.p1);
         });
 
-        this.physics.add.collider(this.p2,this.balle,function(){
-            me.rebond(this.p2);
+        this.physics.add.collider(this.balle,this.p2,function(){
+            me.rebond(me.p2);
         });
+
+
 
         this.initKeyboard();
 
@@ -112,19 +114,26 @@ class Tableau1 extends Phaser.Scene{
 
     update() {
         if(this.balle.x>this.longueur){
-            this.balle.x = 0
+            this.balle.x = 0;
         }
         if(this.balle.x<0){
-            this.balle.x = this.longueur
+            this.balle.x = this.longueur;
         }
 
         if(this.balle.y<0){
-            this.balle.y = 0
+            this.balle.y = 0;
         }
         if(this.balle.y>this.largeur){
-            this.balle.y = this.largeur
+            this.balle.y = this.largeur;
         }
 
+
+        if(this.p1.y<=this.haut.y+10){
+            this.p1.y = this.haut.y+11;
+        }
+        if(this.p1.y>=this.bas.y-120){
+            this.p1.y = this.bas.y-120;
+        }
 
     }
 
