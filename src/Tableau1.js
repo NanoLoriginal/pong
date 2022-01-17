@@ -71,17 +71,17 @@ class Tableau1 extends Phaser.Scene{
             switch (kevent.keyCode)
             {
                 case Phaser.Input.Keyboard.KeyCodes.S:
-                    me.p1.setVelocityY(300);
+                    me.p1.setVelocityY(450);
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.Z:
-                    me.p1.setVelocityY(-300);
+                    me.p1.setVelocityY(-450);
                     break;
 
                 case Phaser.Input.Keyboard.KeyCodes.DOWN:
-                    me.p2.setVelocityY(300);
+                    me.p2.setVelocityY(450);
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.UP:
-                    me.p2.setVelocityY(-300);
+                    me.p2.setVelocityY(-450);
                     break;
 
 
