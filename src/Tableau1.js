@@ -42,11 +42,24 @@ class Tableau1 extends Phaser.Scene{
 
         this.physics.add.collider(this.balle,this.bas);
         this.physics.add.collider(this.balle,this.haut);
-        this.physics.add.collider(this.p1,this.balle);
-        this.physics.add.collider(this.p2,this.balle);
+        let me = this;
+
+        this.physics.add.collider(this.p1,this.balle,function(){
+            me.rebond(this.p1);
+        });
+
+        this.physics.add.collider(this.p2,this.balle,function(){
+            me.rebond(this.p2);
+        });
 
         this.initKeyboard();
 
+    }
+
+    rebond(raquette){
+        console.log(raquette.y);
+        console.log(this.balle.y);
+        console.log(this.balle.y - raquette.y);
     }
 
     initKeyboard(){
@@ -61,6 +74,15 @@ class Tableau1 extends Phaser.Scene{
                 case Phaser.Input.Keyboard.KeyCodes.Z:
                     me.p1.setVelocityY(-300);
                     break;
+
+                case Phaser.Input.Keyboard.KeyCodes.DOWN:
+                    me.p2.setVelocityY(300);
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.UP:
+                    me.p2.setVelocityY(-300);
+                    break;
+
+
             }
         });
 
@@ -73,6 +95,13 @@ class Tableau1 extends Phaser.Scene{
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.Z:
                     me.p1.setVelocityY(0);
+                    break;
+
+                case Phaser.Input.Keyboard.KeyCodes.DOWN:
+                    me.p2.setVelocityY(0);
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.UP:
+                    me.p2.setVelocityY(0);
                     break;
             }
         });
