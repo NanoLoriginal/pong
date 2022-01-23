@@ -6,10 +6,10 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('blue','assets/bleu.jpg');
         this.load.image('pink','assets/rose.jpg');
         this.load.image('circle','assets/cercle.png');
-        //this.load.image('fond','assets/fond a.jpg');
-        for(let j=1;j<=49;j++) {
-            this.load.image('backg' + j, 'assets/fond/frame-' + j + '.jpg');
-        }
+        this.load.image('fond','assets/galaxie.jpg');
+        //for(let j=1;j<=49;j++) {
+        //    this.load.image('backg' + j, 'assets/fond/frame-' + j + '.jpg');
+        //}
     }
 
     getFrames(prefix,length){
@@ -24,13 +24,14 @@ class Tableau1 extends Phaser.Scene{
         //this.foond =this.add.image(500,250,'fond');
         //this.foond.setDisplaySize(1000,550)
 
-        this.foond = this.add.sprite(500, 250, 'backg').setOrigin(0,0);
-        this.anims.create({
-            key: 'backg',
-            frames: this.getFrames('backg',49),
-            frameRate: 32,
-            repeat: -1
-        });
+        this.fond = this.add.image(0, 0, 'fond').setOrigin(0,0);
+        this.fond.setScale(0.4,0.4),
+        //this.anims.create({
+        //    key: 'backg',
+        //    frames: this.getFrames('backg',49),
+        //    frameRate: 32,
+        //    repeat: -1
+        //});
 
         this.hauteur = 500
         this.largeur = 1000
@@ -55,10 +56,10 @@ class Tableau1 extends Phaser.Scene{
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
         this.player1 = this.physics.add.sprite(50, 360, 'blue')
-        this.player1.setDisplaySize(20, 100)
+        this.player1.setDisplaySize(20, 50)
         this.player1.body.setAllowGravity(false)
         this.player2 = this.physics.add.sprite(920, 360, 'pink')
-        this.player2.setDisplaySize(20, 100)
+        this.player2.setDisplaySize(20, 50)
         this.player2.body.setAllowGravity(false)
         this.player1.setImmovable(true)
         this.player2.setImmovable(true)
