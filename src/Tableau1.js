@@ -3,10 +3,10 @@ class Tableau1 extends Phaser.Scene{
 
 
     preload(){
-        this.load.image('blue','assets/bleu.jpg');
-        this.load.image('pink','assets/rose.jpg');
-        this.load.image('circle','assets/cercle.png');
-        this.load.image('fond','assets/galaxie.jpg');
+        this.load.image('foin','assets/foin.jpg');
+        this.load.image('foin','assets/foin.jpg');
+        this.load.image('poulet','assets/poulet.jpg');
+        this.load.image('fond','assets/ferme.jpg');
         //for(let j=1;j<=49;j++) {
         //    this.load.image('backg' + j, 'assets/fond/frame-' + j + '.jpg');
         //}
@@ -25,7 +25,7 @@ class Tableau1 extends Phaser.Scene{
         //this.foond.setDisplaySize(1000,550)
 
         this.fond = this.add.image(0, 0, 'fond').setOrigin(0,0);
-        this.fond.setScale(0.4,0.4),
+        this.fond.setScale(0.8,0.6),
         //this.anims.create({
         //    key: 'backg',
         //    frames: this.getFrames('backg',49),
@@ -40,26 +40,26 @@ class Tableau1 extends Phaser.Scene{
             this.speedX = 500*Phaser.Math.Between(-1,1)
         }
         this.speedY = Phaser.Math.Between(-500, 500)
-        this.maxspeed = 500
+        this.maxspeed = 1000
 
-        this.balle = this.physics.add.sprite(this.largeur/2, this.hauteur/2, 'circle')
-        this.balle.setDisplaySize(20, 20)
+        this.balle = this.physics.add.sprite(this.largeur/2, this.hauteur/2, 'poulet')
+        this.balle.setDisplaySize(40, 40)
         this.balle.body.setBounce(1,1);
-        this.balle.body.setAllowGravity(false)
+        this.balle.body.setAllowGravity(false);
 
-        this.haut = this.physics.add.sprite(0, 0, 'blue').setOrigin(0, 0)
+        this.haut = this.physics.add.sprite(0, 0, 'foin').setOrigin(0, 0)
         this.haut.setDisplaySize(this.largeur, 20)
         this.haut.body.setAllowGravity(false)
         this.haut.setImmovable(true);
-        this.bas = this.physics.add.sprite(0, 480, 'pink').setOrigin(0, 0)
+        this.bas = this.physics.add.sprite(0, 480, 'foin').setOrigin(0, 0)
         this.bas.setDisplaySize(this.largeur, 20)
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
-        this.player1 = this.physics.add.sprite(50, 360, 'blue')
-        this.player1.setDisplaySize(20, 50)
+        this.player1 = this.physics.add.sprite(50, 360, 'foin')
+        this.player1.setDisplaySize(50, 50)
         this.player1.body.setAllowGravity(false)
-        this.player2 = this.physics.add.sprite(920, 360, 'pink')
-        this.player2.setDisplaySize(20, 50)
+        this.player2 = this.physics.add.sprite(920, 360, 'foin')
+        this.player2.setDisplaySize(50, 50)
         this.player2.body.setAllowGravity(false)
         this.player1.setImmovable(true)
         this.player2.setImmovable(true)
@@ -87,19 +87,27 @@ class Tableau1 extends Phaser.Scene{
         this.player1Speed = 0
         this.player2Speed = 0
 
-        this.joueurGauche = new Joueur('Robert','joueurGauche')
-        this.joueurDroite = new Joueur('Jean marie','joueurDroite')
+        this.joueurGauche = new Joueur('Robert le berger','joueurGauche')
+        this.joueurDroite = new Joueur('Jean le berger','joueurDroite')
         console.log(this.joueurGauche)
 
 
         this.tweens.add({
             targets:[this.player1,this.player2],
-            scaleY :6,
+            scaleY :0.5,
             ease :'Linear',
             yoyo : true,
-            repeat:50,
+            repeat:5000,
             duration:1000,
         });
+
+        this.tweens.add({
+            targets:[this.balle],
+            rotation: 6,
+            ease :'Repeat',
+            repeat:1000000,
+            duration:1000,
+        })
 
 
 
@@ -127,7 +135,7 @@ class Tableau1 extends Phaser.Scene{
         this.balle.y = this.hauteur/2
         this.speedX = 0
 
-        this.balle.setVelocityX(Math.random()>0.5?-300:300)
+        this.balle.setVelocityX(Math.random()>0.5?-500:500)
         this.balle.setVelocityY(0)
     }
 
