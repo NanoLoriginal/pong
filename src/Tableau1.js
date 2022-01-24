@@ -24,6 +24,8 @@ class Tableau1 extends Phaser.Scene{
         //this.foond =this.add.image(500,250,'fond');
         //this.foond.setDisplaySize(1000,550)
 
+
+
         this.fond = this.add.image(0, 0, 'fond').setOrigin(0,0);
         this.fond.setScale(0.8,0.6),
         //this.anims.create({
@@ -109,6 +111,15 @@ class Tableau1 extends Phaser.Scene{
             duration:1000,
         })
 
+        this.tweens.add({
+            targets:[this.balle],
+            y:100,
+            ease:'Linear',
+            yoyo : true,
+            repeat:5000,
+            duration:Phaser.Math.Between(1000,6000),
+        })
+
 
 
         this.balleAucentre();
@@ -160,6 +171,7 @@ class Tableau1 extends Phaser.Scene{
         this.player1.y += this.player1Speed
         this.player2.y += this.player2Speed
     }
+
 
     initKeyboard(){
         let me = this
