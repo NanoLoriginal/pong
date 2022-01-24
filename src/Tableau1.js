@@ -5,7 +5,7 @@ class Tableau1 extends Phaser.Scene{
     preload(){
         this.load.image('foin','assets/foin.jpg');
         this.load.image('foin','assets/foin.jpg');
-        this.load.image('poulet','assets/poulet.jpg');
+        this.load.image('poulet','assets/poulet.png');
         this.load.image('fond','assets/ferme.jpg');
         //for(let j=1;j<=49;j++) {
         //    this.load.image('backg' + j, 'assets/fond/frame-' + j + '.jpg');
