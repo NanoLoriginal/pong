@@ -1,7 +1,7 @@
 body{
     font-family: Arial, sans-serif;
     font-size: 12px;
-    background-color: #000000;
+    background-color: #6dc733;
     text-align: center;
     background-image: 'ferme';
 }
@@ -41,7 +41,7 @@ canvas{
 }
 
 .score{
-    color:#0f0
+    color: #ff0000
 }
 .name{
     font-size: 3vw;
