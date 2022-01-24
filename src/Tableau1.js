@@ -117,7 +117,7 @@ class Tableau1 extends Phaser.Scene{
             ease:'Linear',
             yoyo : true,
             repeat:5000,
-            duration:Phaser.Math.Between(1000,6000),
+            duration:Phaser.Math.Between(3000,6000),
         })
 
 
