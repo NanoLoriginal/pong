@@ -6,6 +6,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('foin','assets/foin.png');
         this.load.image('poulet','assets/poulet.png');
         this.load.image('fond','assets/ferme.jpg');
+        this.load.image('white','assets/white-flare.png');
         //for(let j=1;j<=49;j++) {
         //    this.load.image('backg' + j, 'assets/fond/frame-' + j + '.jpg');
         //}
@@ -109,6 +110,15 @@ class Tableau1 extends Phaser.Scene{
             repeat:1000000,
             duration:1000,
         })
+        var particles = this.add.particles('white');
+
+        var emitter = particles.createEmitter({
+            speed: 100,
+            scale: { start: 0.1, end: 0 },
+            blendMode: 'ADD'
+        });
+
+        emitter.startFollow(this.balle);
 
 
 
