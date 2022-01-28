@@ -7,7 +7,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('poulet','assets/poulet.png');
         this.load.image('fond','assets/ferme.jpg');
         this.load.image('white','assets/white-flare.png');
-        this.load.audio('music', 'asset/music.mp3')
+        this.load.audio('music', 'assets/music.mp3')
         //for(let j=1;j<=49;j++) {
         //    this.load.image('backg' + j, 'assets/fond/frame-' + j + '.jpg');
         //}
@@ -90,9 +90,9 @@ class Tableau1 extends Phaser.Scene{
         this.joueurDroite = new Joueur('Jean le berger','joueurDroite')
         console.log(this.joueurGauche)
 
-        //this.musicBg=this.sound.add('music');
-        //this.musicBg.play();
-        //this.musicBg.volume=0.2;
+        this.musicBg=this.sound.add('music');
+        this.musicBg.play();
+        this.musicBg.volume=0.2;
 
 
         this.tweens.add({
