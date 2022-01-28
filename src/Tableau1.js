@@ -131,15 +131,22 @@ class Tableau1 extends Phaser.Scene{
     rebond(players){
         let me = this ;
         console.log(this.player1.y);
+        console.log(this.player2.y);
         console.log(me.balle.y);
         let hauteurPlayers = players.displayHeight;
 
         let positionRelativePlayers = (this.balle.y - players.y);
+        let middle = ((players.y - hauteurPlayers)/2);
 
         positionRelativePlayers= (positionRelativePlayers / hauteurPlayers)
-        positionRelativePlayers = positionRelativePlayers*2-1;
+        if (middle>positionRelativePlayers){
+            positionRelativePlayers = positionRelativePlayers*2-1;
+        }
+        else{
+            positionRelativePlayers = positionRelativePlayers*2+1;
+        }
 
-        this.balle.setVelocityY(this.balle.body.velocity.y + positionRelativePlayers * 50);
+        this.balle.setVelocityY(this.balle.body.velocity.y + positionRelativePlayers * 100);
 
     }
 
@@ -180,16 +187,16 @@ class Tableau1 extends Phaser.Scene{
         this.input.keyboard.on('keydown', function (kevent) {
             switch (kevent.keyCode) {
                 case Phaser.Input.Keyboard.KeyCodes.Z:
-                    me.player1Speed = -5
+                    me.player1Speed = -2
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.S:
-                    me.player1Speed = 5
+                    me.player1Speed = 2
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.UP:
-                    me.player2Speed = -5
+                    me.player2Speed = -2
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.DOWN:
-                    me.player2Speed = 5
+                    me.player2Speed = 2
                     break;
             }
         });
