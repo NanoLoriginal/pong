@@ -94,6 +94,11 @@ class Tableau1 extends Phaser.Scene{
         this.joueurDroite = new Joueur('Jean le berger','joueurDroite')
         console.log(this.joueurGauche)
 
+        this.musicBg=this.sound.add('music');
+        this.musicBg.mute=false;
+        this.musicBg.play();
+        this.musicBg.volume=0.2;
+
 
         this.tweens.add({
             targets:[this.player1,this.player2],
@@ -120,6 +125,8 @@ class Tableau1 extends Phaser.Scene{
         });
 
         emitter.startFollow(this.balle);
+
+
 
 
 
