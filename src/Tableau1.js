@@ -58,10 +58,10 @@ class Tableau1 extends Phaser.Scene{
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
         this.player1 = this.physics.add.sprite(50, 360, 'foin')
-        this.player1.setDisplaySize(50, 200)
+        this.player1.setDisplaySize(50, 100)
         this.player1.body.setAllowGravity(false)
         this.player2 = this.physics.add.sprite(920, 360, 'foin')
-        this.player2.setDisplaySize(50, 200)
+        this.player2.setDisplaySize(50, 100)
         this.player2.body.setAllowGravity(false)
         this.player1.setImmovable(true)
         this.player2.setImmovable(true)
@@ -94,14 +94,14 @@ class Tableau1 extends Phaser.Scene{
         console.log(this.joueurGauche)
 
 
-        /*this.tweens.add({
+        this.tweens.add({
             targets:[this.player1,this.player2],
             scaleY :0.2,
             ease :'Linear',
             yoyo : true,
             repeat:5000,
             duration:1200,
-        });*/
+        });
 
         this.tweens.add({
             targets:[this.balle],
