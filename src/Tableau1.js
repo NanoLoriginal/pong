@@ -7,6 +7,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('poulet','assets/poulet.png');
         this.load.image('fond','assets/ferme.jpg');
         this.load.image('white','assets/white-flare.png');
+        this.load.audio('music', ['asset/music.mp3'])
         //for(let j=1;j<=49;j++) {
         //    this.load.image('backg' + j, 'assets/fond/frame-' + j + '.jpg');
         //}
@@ -27,7 +28,7 @@ class Tableau1 extends Phaser.Scene{
 
 
         this.fond = this.add.image(0, 0, 'fond').setOrigin(0,0);
-        this.fond.setScale(0.8,0.6),
+        this.fond.setScale(1,0.8),
         //this.anims.create({
         //    key: 'backg',
         //    frames: this.getFrames('backg',49),
@@ -35,8 +36,8 @@ class Tableau1 extends Phaser.Scene{
         //    repeat: -1
         //});
 
-        this.hauteur = 500
-        this.largeur = 1000
+        this.hauteur = 720
+        this.largeur = 1280
         this.speedX = 0
         while(this.speedX===0){
             this.speedX = 500*Phaser.Math.Between(-1,1)
@@ -45,22 +46,22 @@ class Tableau1 extends Phaser.Scene{
         this.maxspeed = 1000
 
         this.balle = this.physics.add.sprite(this.largeur/2, this.hauteur/2, 'poulet')
-        this.balle.setDisplaySize(40, 40)
-        this.balle.body.setBounce(1,1);
+        this.balle.setDisplaySize(60, 60)
+        this.balle.body.setBounce(1.1,1);
         this.balle.body.setAllowGravity(false);
 
         this.haut = this.physics.add.sprite(0, 0, 'foin').setOrigin(0, 0)
-        this.haut.setDisplaySize(this.largeur, 20)
+        this.haut.setDisplaySize(this.largeur, 40)
         this.haut.body.setAllowGravity(false)
         this.haut.setImmovable(true);
-        this.bas = this.physics.add.sprite(0, 480, 'foin').setOrigin(0, 0)
-        this.bas.setDisplaySize(this.largeur, 20)
+        this.bas = this.physics.add.sprite(0, 720, 'foin').setOrigin(0, 1)
+        this.bas.setDisplaySize(this.largeur, 40)
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
         this.player1 = this.physics.add.sprite(50, 360, 'foin')
         this.player1.setDisplaySize(50, 100)
         this.player1.body.setAllowGravity(false)
-        this.player2 = this.physics.add.sprite(920, 360, 'foin')
+        this.player2 = this.physics.add.sprite(1240, 360, 'foin')
         this.player2.setDisplaySize(50, 100)
         this.player2.body.setAllowGravity(false)
         this.player1.setImmovable(true)
@@ -144,9 +145,6 @@ class Tableau1 extends Phaser.Scene{
         //positionRelativePlayers = positionRelativePlayers-1;
 
         this.balle.setVelocityY(this.balle.body.velocity.y + coeff * 2);
-        if (this.lock==0) {
-            this.balle.setVelocityX(this.balle.body.velocity.x * 1.5)
-        }
 
     }
 
@@ -187,32 +185,32 @@ class Tableau1 extends Phaser.Scene{
         let me = this
         this.input.keyboard.on('keydown', function (kevent) {
             switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.Z:
+                case Phaser.Input.Keyboard.KeyCodes.S:
                     me.player1Speed = -2
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.S:
+                case Phaser.Input.Keyboard.KeyCodes.X:
                     me.player1Speed = 2
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.UP:
+                case Phaser.Input.Keyboard.KeyCodes.J:
                     me.player2Speed = -2
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.DOWN:
+                case Phaser.Input.Keyboard.KeyCodes.N:
                     me.player2Speed = 2
                     break;
             }
         });
         this.input.keyboard.on('keyup', function (kevent) {
             switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.Z:
-                    me.player1Speed = 0
-                    break;
                 case Phaser.Input.Keyboard.KeyCodes.S:
                     me.player1Speed = 0
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.UP:
+                case Phaser.Input.Keyboard.KeyCodes.X:
+                    me.player1Speed = 0
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.J:
                     me.player2Speed = 0
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.DOWN:
+                case Phaser.Input.Keyboard.KeyCodes.N:
                     me.player2Speed = 0
                     break;
             }
