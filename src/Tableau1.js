@@ -166,7 +166,8 @@ class Tableau1 extends Phaser.Scene{
         this.balleAucentre();
     }
 
-    update(){
+    update(a){
+        console.log(a)
         if(this.balle.x>this.largeur){
             this.win(this.joueurGauche);
         }
