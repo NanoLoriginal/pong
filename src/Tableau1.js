@@ -64,11 +64,11 @@ class Tableau1 extends Phaser.Scene{
         this.player2.setImmovable(true)
         let me = this;
         this.physics.add.collider(this.player1, this.balle,function(){
-            console.log('touche player 1')
+            //console.log('touche player 1')
             me.rebond(me.player1)
         })
         this.physics.add.collider(this.player2, this.balle,function(){
-            console.log('touche player 2')
+            //console.log('touche player 2')
             me.rebond(me.player2)
         })
 
@@ -118,8 +118,13 @@ class Tableau1 extends Phaser.Scene{
             scale: { start: 0.1, end: 0 },
             blendMode: 'ADD'
         });
+        this.a1=0
+        this.dt=0
+        this.fps = 0
+        this.ms = 0
 
         emitter.startFollow(this.balle);
+
 
 
         this.balleAucentre();
@@ -128,8 +133,8 @@ class Tableau1 extends Phaser.Scene{
 
     rebond(players){
         let me = this ;
-        console.log(this.player1.y);
-        console.log(me.balle.y);
+        //console.log(this.player1.y);
+        //console.log(me.balle.y);
         let hauteurPlayers = players.displayHeight;
 
         let positionRelativePlayers = (this.balle.y - players.y);
@@ -166,8 +171,18 @@ class Tableau1 extends Phaser.Scene{
         this.balleAucentre();
     }
 
+
     update(a){
-        console.log(a)
+        let me = this
+        //console.log("ceci est a:",a)
+        this.ms = a-this.a1
+        this.dt = this.ms/1000
+        this.fps = 1/this.dt
+        console.log("ceci est le compteur de fps: ",this.fps)
+        this.a1 = a
+
+        //console.log(game.loop.actualFps)
+
         if(this.balle.x>this.largeur){
             this.win(this.joueurGauche);
         }
